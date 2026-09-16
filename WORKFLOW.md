@@ -1,17 +1,15 @@
-# Git Rescue Lab - Workflow
- 
-## Task 1: Bisect Finding
-* **Bad Commit Hash:** c99fb42
-* **Explanation:** The bug was caused because the code was checking the length of the items array (number of distinct products) instead of calculating the total quantity of items in the cart.
- 
-## Task 6: Workflow Questions
- 
-**1. Branching Strategy Recommendation**
-For a small team of 4, I recommend GitHub Flow. I chose this because it is simple, keeps the main branch deployable, and avoids "merge hell" by encouraging short-lived feature branches, which is perfect for a small, fast-moving team.
- 
-**2. Removing the Secret from History**
-To completely erase the `.env` file from all past commits, we would need to use a tool like `git filter-repo` or the older `git filter-branch`. This assignment didn't require that step because it aggressively rewrites the entire repository history, which is dangerous and can break the repository for other teammates if not coordinated perfectly.
- 
-**3. Rewriting History**
-It was acceptable to rewrite history in Task 2 because the "asdf" commit was only on my local machine. It would NOT be acceptable to rewrite a commit my teammates had already pulled because changing a commit creates a brand new hash. If teammates already have the old hash, pushing the new one creates divergent timelines and massive merge conflicts.
- 
+Task 1: Bisect Finding
+
+Bad Commit Hash: c99fb42
+Explanation: (recommend correcting to match the actual diff — see above)
+
+Task 6: Workflow Questions
+
+1. Branching Strategy Recommendation
+GitHub Flow is my pick for a four-person team. It's lightweight, keeps main always deployable, and its short-lived feature branches sidestep the tangled merges that come with letting branches live too long — a good fit for a small team that needs to move quickly.
+
+2. Removing the Secret from History
+Fully erasing .env from every past commit would require a history-rewriting tool such as git filter-repo (or the older git filter-branch). The assignment skipped this step because it's a heavy-handed operation — it rewrites the whole repo's history, and if the team isn't perfectly synced on the change, it can break everyone else's local copies.
+
+3. Rewriting History
+Rewriting the "asdf" commit in Task 2 was fine because it existed only on my machine — no one else's work depended on it. Doing the same to a commit teammates had already pulled would be a problem: since a rewrite always produces a new commit hash, anyone still holding the old hash would end up with a timeline that's diverged from yours, leading to confusing conflicts when they try to sync back up.
